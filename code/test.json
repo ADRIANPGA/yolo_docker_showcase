@@ -1,0 +1,12 @@
+{
+    "image":"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+    "objects":[
+        {"label":"person","x":740,"y":628,"width":138,"height":501,"confidence":0.9},
+        {"label":"person","x":282,"y":631,"width":122,"height":448,"confidence":0.88},
+        {"label":"person","x":147,"y":651,"width":193,"height":506,"confidence":0.88},
+        {"label":"bus","x":414,"y":498,"width":761,"height":539,"confidence":0.84},
+        {"label":"person","x":30,"y":709,"width":59,"height":317,"confidence":0.44}
+        ],
+        "count":5
+    
+}
