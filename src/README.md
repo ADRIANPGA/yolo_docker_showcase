@@ -2,55 +2,90 @@
 
 This is a Streamlit-based web application for object detection using YOLO (You Only Look Once) models.
 
-## Project Structure
-
-The application is organized in a modular structure:
-
-```
-src/
-├── main.py           # Main entry point for the application
-├── ui.py             # UI components and styling
-├── detection.py      # Object detection logic
-├── utils.py          # Utility functions
-├── models/           # Directory for model files
-│   ├── yolov8n.pt    # YOLOv8 nano model
-│   ├── yolov8n.onnx  # YOLOv8 nano ONNX model
-│   └── ...
-└── resources/        # Resources like images, logos, etc.
-    ├── cds_logo.png  # Logo for the sidebar
-    └── sample_images/ # Sample images for testing
-```
-
 ## Features
 
 - Object detection using YOLOv8 models
-- Support for both PyTorch and ONNX models
 - Upload your own images or use sample images
 - Adjust confidence threshold for detection
 - Filter detections by class
 - Customize bounding box colors
 - Download processed images with detections
 
+## Environment Setup
+
+### Required Python Version
+This application requires Python 3.11.5.
+
+### Setup on Windows
+
+1. Install Python 3.11.5 from the [official Python website](https://www.python.org/downloads/release/python-3115/)
+
+2. Install Microsoft Visual C++ Build Tools (required for some packages):
+   - Download the [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+   - During installation, select "Desktop development with C++"
+
+3. Open Command Prompt as Administrator and create a virtual environment:
+   ```batch
+   cd path\to\project\src
+   python -m venv yolost
+   yolost\Scripts\activate
+   ```
+
+4. Install the required packages:
+   ```batch
+   pip install -r requirements.txt
+   ```
+
+### Setup on WSL (Ubuntu)
+
+1. Open WSL terminal and install Python 3.11.5:
+   ```bash
+   sudo apt update
+   sudo apt install software-properties-common -y
+   
+   sudo apt install python3.11 python3.11-venv python3.11-dev -y
+   ```
+2. Create a virtual environment:
+   ```bash
+   cd path/to/project/src
+   python3.11 -m venv yolost
+   source yolost/bin/activate
+   ```
+
+3. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
 ## Running the App
 
-To run the app, navigate to the `src` directory and run:
+To run the app, make sure your virtual environment is activated, navigate to the `src` directory and run:
 
 ```bash
 streamlit run main.py
 ```
 
-## Dependencies
+If that doesn't work, try:
 
-The app requires the following main dependencies:
-- streamlit
-- opencv-python
-- numpy
-- ultralytics (for YOLOv8)
-- Pillow
+```bash
+python -m streamlit run main.py
+```
 
-## Customization
+## Troubleshooting
 
-You can customize the app by:
-- Adding more models to the `models` directory
-- Adding sample images to the `resources/sample_images` directory
-- Modifying the UI styling in the `ui.py` file 
+If you encounter issues with the installation:
+
+1. Ensure you're using Python 3.11.5
+2. For Windows users, make sure you've installed Microsoft Visual C++ Build Tools
+3. If installation fails, try installing packages one by one:
+   ```
+   pip install streamlit==1.34.0
+   pip install numpy==1.26.4
+   pip install opencv-python-headless==4.9.0.80
+   pip install pillow==10.3.0
+   pip install ultralytics==8.1.9
+   pip install torch==2.2.0+cpu torchvision==0.17.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+   pip install onnx==1.17.0
+   pip install pyyaml==6.0.1 tqdm==4.66.3 matplotlib==3.8.2
+   ```
+4. If you encounter DLL load errors on Windows, install the [Microsoft Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe) 
